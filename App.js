@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { View, Text, StyleSheet } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+
+
+
+// or any pure javascript modules available in npm
+// import {  } from 'react-native-paper';
 
 export default class App extends React.Component {
   // valores globais do app
@@ -8,7 +13,8 @@ export default class App extends React.Component {
     peso: 0,
     altura: 0,
     imc: 0,
-    legenda: 'Indeterminado'
+    legenda: 'Indeterminado',
+    cor: '#bdc3c7',
   };
 
   calcularIMC = () => {
@@ -16,28 +22,33 @@ export default class App extends React.Component {
       this.state.peso / (this.state.altura * this.state.altura);
 
     this.setState({
-      imc: resultado
+      imc: Math.ceil(resultado)
     });
 
     if(resultado < 18.5) {
       this.setState({
-        legenda: 'Magreza'
+        legenda: 'Magreza',
+        cor: '#e74c3c',
       });
     } else if (resultado >= 18.5 && resultado < 25) {
       this.setState({
-        legenda: 'Normal'
+        legenda: 'Normal',
+        cor: '#2ecc71',
       });
     } else if (resultado >= 25 && resultado < 30) {
      this.setState({
-        legenda: 'Sobrepeso'
+        legenda: 'Sobrepeso',
+        cor: '#f1c40f',
       }); 
     } else if (resultado >= 30 && resultado < 40) {
       this.setState({
-        legenda: 'Obesidade'
+        legenda: 'Obesidade',
+        cor: '#e67e22',
       }); 
     } else if (resultado >= 40) {
       this.setState({
-        legenda: 'Obesidade Grave'
+        legenda: 'Obesidade Grave',
+        cor: '#e74c3c',
       }); 
     }
   }
@@ -47,21 +58,29 @@ export default class App extends React.Component {
       <View style={styles.app}>
         <Text style={styles.legenda}>Seu IMC</Text>
         
-        <View>
+        <View style={[styles.painel, {backgroundColor: this.state.cor}]}>
           <Text style={styles.resultado}>{this.state.imc}</Text>
           <Text style={styles.diagnostico}>{this.state.legenda}</Text>
         </View>
 
         <View>
-          <TextInput style={styles.peso} 
-          onChangeText={valor => {
-            this.setState({peso: valor});
-          }}/>
-          <TextInput style={styles.altura} 
-          onChangeText={valor => {
-            this.setState({altura: valor});
-          }}/>
-          <Button title="Calcular" onPress={this.calcularIMC} />
+          <TextInput 
+            style={styles.peso}
+            label="Peso"
+            onChangeText={valor => {
+              this.setState({peso: valor.replace(',', '.')});
+            }}
+          />
+          <TextInput
+            style={styles.altura}
+            label="Altura"
+            onChangeText={(valor) => {
+              this.setState({altura: valor.replace(',', '.')});
+            }}
+          />
+          <Button mode="contained" onPress={this.calcularIMC}>
+            Calcular
+          </Button>
         </View>
       </View>
     );
@@ -71,7 +90,14 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   app: {
     padding: 10,
-    marginTop: 50,
+    marginTop: 40,
+  },
+  painel: {
+    borderRadius: 5,
+    width: 150,
+    marginVertical: 10,
+    padding: 8,
+    alignSelf: 'center'
   },
   legenda: {
     textAlign: 'center',
@@ -87,12 +113,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   peso: {
-    borderColor: '#000',
-    borderWidth: 1,
+    marginVertical: 10,
   },
   altura: {
-    borderColor: '#000',
-    borderWidth: 1,
+    marginVertical: 10,
   },
 });
 
