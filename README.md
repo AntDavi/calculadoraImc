@@ -1,11 +1,33 @@
-# Sample Snack app
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by clicking the **Run** button or use the simulator by clicking **Tap to Play**. When you're done, click **Save** and share the link!
+<h1 align="center">
+    <a href="https://pt-br.reactjs.org/">🔗 Calculadora IMC</a>
+</h1>
+<p align="center">🚀 Uma calculadora de IMC Native</p>
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Export** your project and use it with [expo-cli](https://docs.expo.io/versions/latest/introduction/installation.html).
+### 🛠 Tecnologias
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the **Embed** button.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io).
+- [Expo](https://expo.io/)
+- [React Native](https://reactnative.dev/)
 
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack-web).
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Rodando o Back End (servidor)
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/AntDavi/calculadoraImc.git>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd calculadoraImc
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação
+$ expo start
