@@ -2,7 +2,7 @@
 <h1 align="center">
     <a href="https://pt-br.reactjs.org/">🔗 Calculadora IMC</a>
 </h1>
-<p align="center">🚀 Uma calculadora de IMC Native</p>
+<p align="center">🚀 Uma calculadora de IMC</p>
 
 ### 🛠 Tecnologias
 
